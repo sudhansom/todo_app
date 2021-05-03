@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>{{request.user}}</p>
+<a href="{% url 'logout' %}">Logout</a>
+<h4>Task to be completed: {{count}}</h4>
+
+<h2>List View</h2>
+<a href="{% url 'task-create' %}">Add New Task</a>
+    {% for task in object_list  %}
+        <p>{{task}}<a href="{% url 'task-detail' task.id %}">    view</a>
+            <a href="{% url 'task-update' task.id %}">Update</a>
+            <a href="{% url 'task-delete' task.id %}">Delete</a></p>
+    {% endfor %}
+</body>
+</html>
